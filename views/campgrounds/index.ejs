@@ -7,7 +7,9 @@
   <div class="row row-cols-1 row-cols-md-3 g-3">
   <% for (let camp of campgrounds) { %>
     <div class="card col">
-      <img src="<%= camp.image %>" class="card-img-top img-fluid" alt="<%= camp.title %>">
+      <% for (let img of camp.images) { %>
+        <img src="<%= img.url %>" class="card-img-top img-fluid" alt="<%= camp.title %>">
+      <% } %>
       <div class="card-body">
         <h5 class="card-title"><%= camp.title %></h5>
         <p class="card-text"><%= camp.location %></p>

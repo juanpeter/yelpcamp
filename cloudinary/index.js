@@ -9,8 +9,10 @@ cloudinary.config({
 
 const storage = new CloudinaryStorage({
   cloudinary,
-    folder: 'Yelpcamp',
-    allowedFormats: ['png', 'jpeg', 'jpg'], // supports promises as well
+    params: {
+      folder: 'Yelpcamp',
+      allowedFormats: ['png', 'jpeg', 'jpg'], // supports promises as well
+    },
     public_id: (req, file) => 'computed-filename-using-request',
 });
  
