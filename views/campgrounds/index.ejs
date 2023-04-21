@@ -7,9 +7,26 @@
   <div class="row row-cols-1 row-cols-md-3 g-3">
   <% for (let camp of campgrounds) { %>
     <div class="card col">
-      <% for (let img of camp.images) { %>
-        <img src="<%= img.url %>" class="card-img-top img-fluid" alt="<%= camp.title %>">
-      <% } %>
+      <div id="cardCarousel" class="carousel slide cardCarousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% camp.images.forEach((img, index) => { %>
+            <div class="carousel-item <%= index === 0 ? "active" : "" %>">
+              <img src="<%= img.url %>" class="d-block w-100 object-fit-contain" alt="<%= camp.title %>">
+            </div>
+          <% }) %>
+        
+          <% if(camp.images.length > 1) { %>
+            <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          <% } %>
+        </div>
+      </div>
       <div class="card-body">
         <h5 class="card-title"><%= camp.title %></h5>
         <p class="card-text"><%= camp.location %></p>
