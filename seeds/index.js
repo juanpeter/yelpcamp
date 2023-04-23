@@ -24,7 +24,12 @@ const seedDb = async () => {
 
     const price = Math.floor(Math.random() * 100).toFixed(2)
 
-    const image = `https://picsum.photos/id/${Math.floor(Math.random() * 500)}/480/320`
+    const images = [
+      {
+        url: `https://picsum.photos/id/${Math.floor(Math.random() * 500)}/480/320`,
+        filename: 'Random File'
+      }
+  ]
     
     //Keep same number in order to not have mismatching city/state
     const citiesArrLength = Math.floor(Math.random() * cities.length)
@@ -38,7 +43,7 @@ const seedDb = async () => {
       title,
       price,
       location,
-      image,
+      images,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus interdum neque felis, ac tincidunt mi rutrum in. Cras ac dolor maximus, consectetur sapien ut, fermentum est. Cras sit amet lacus felis.',
     })
 
