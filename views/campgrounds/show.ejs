@@ -2,8 +2,10 @@
 
 <div class="row mb-5">
   <div class="col-6">
-    <div class="card">
 
+    <div id='map' style='width: 400px; height: 300px;'></div>
+
+    <div class="card">
         <div id="cardCarousel" class="carousel slide cardCarousel">
           <div class="carousel-inner">
             <% campground.images.forEach((img, index) => { %>
@@ -98,3 +100,10 @@
     <% } %>
   </div>
 </div>
+
+<script>
+  const mapboxToken = '<%- process.env.MAPBOX_TOKEN %>'
+  const campground = <%- JSON.stringify(campground) %>
+</script>
+
+<script src="/javascripts/showPageMap.js"></script>

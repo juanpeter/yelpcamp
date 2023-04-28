@@ -38,10 +38,16 @@ const seedDb = async () => {
 
     const author = "64388c04d166a41f0bdd8fab"
 
+    const geometry = {
+      type: 'Point',
+      coordinates: [-113.1331, 47.0202]
+    }
+
     const newCamp = new Campground({
       author,
       title,
       price,
+      geometry,
       location,
       images,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus interdum neque felis, ac tincidunt mi rutrum in. Cras ac dolor maximus, consectetur sapien ut, fermentum est. Cras sit amet lacus felis.',
