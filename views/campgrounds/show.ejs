@@ -2,9 +2,6 @@
 
 <div class="row mb-5">
   <div class="col-6">
-
-    <div id='map' style='width: 400px; height: 300px;'></div>
-
     <div class="card">
         <div id="cardCarousel" class="carousel slide cardCarousel">
           <div class="carousel-inner">
@@ -52,6 +49,8 @@
     </div>
   </div>
   <div class="col-6">
+    <div id='map' style='width: 400px; height: 300px;'></div>
+
     <% if(currentUser) { %>
       <h2>Leave a review</h2>
       <form class="mb-3 needs-validation" action="/campgrounds/<%= campground._id %>/reviews" method="POST" novalidate>
