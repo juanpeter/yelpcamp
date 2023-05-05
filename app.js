@@ -12,6 +12,8 @@ const flash = require('connect-flash')
 const mongoSanitize = require("express-mongo-sanitize")
 const helmet = require('helmet')
 
+const MongoStore = require('connect-mongo');
+
 const ExpressError = require('./utils/ExpressError')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
@@ -50,7 +52,20 @@ app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(mongoSanitize())
 
+const store = MongoStore.create({
+  mongoUrl: 'mongodb://localhost:27017/yelp-camp',
+  touchAfter: 24 * 60 * 60,
+  crypto: {
+      secret: 'thisshouldbeabettersecret!'
+  }
+});
+
+store.on('error', function(e) {
+  console.log("SESSION STORE ERROR", e)
+})
+
 const sessionConfig = {
+  store,
   name: 'session',
   secret: 'thisshouldbeabettersecret',
   resave: false,
